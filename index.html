@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css">
+    </link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
+    </link>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
+    <title>CMS_map</title>
+</head>
+<style>
+    #map {
+        height: 100vh;
+    }
+
+    .marker-cluster-small {
+        background-color: rgba(181, 226, 140, 0.6);
+    }
+
+    .marker-cluster-small div {
+        background-color: rgba(110, 204, 57, 0.6);
+    }
+
+    .marker-cluster-medium {
+        background-color: rgba(241, 211, 87, 0.6);
+    }
+
+    .marker-cluster-medium div {
+        background-color: rgba(240, 194, 12, 0.6);
+    }
+
+    .marker-cluster-large {
+        background-color: rgba(253, 156, 115, 0.6);
+    }
+
+    .marker-cluster-large div {
+        background-color: rgba(241, 128, 23, 0.6);
+    }
+
+    .marker-cluster {
+        background-clip: padding-box;
+        border-radius: 20px;
+    }
+
+    .marker-cluster div {
+        width: 30px;
+        height: 30px;
+        margin-left: 5px;
+        margin-top: 5px;
+
+        text-align: center;
+        border-radius: 15px;
+        font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    }
+
+    .marker-cluster span {
+        line-height: 30px;
+    }
+</style>
+
+<body>
+    <div id="map"></div>
+    <script>
+        // let map = L.map('map').setView([25.04569127009851, 121.52961418301948], 18);
+
+        // const green = new L.Icon({
+        //     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        //     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        //     iconSize: [25, 41],
+        //     iconAnchor: [12, 41],
+        //     popupAnchor: [1, -34],
+        //     shadowSize: [41, 41]
+        // });
+        // const greyIcon = new L.Icon({
+        //     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+        //     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        //     iconSize: [25, 41],
+        //     iconAnchor: [12, 41],
+        //     popupAnchor: [1, -34],
+        //     shadowSize: [41, 41]
+        // });
+
+        // L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        //     maxZoom: 20,
+        //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        // }).addTo(map);
+
+
+        // let data = [
+        //     { 'name': '格拉斯麗台北飯店#1', lat: 25.043282444187025, lng: 121.53072085834616, icon: green, lease: '可租借' },
+        //     { 'name': '和逸#忠孝', lat: 25.044837666240266, lng: 121.52535644056982, icon: greyIcon, lease: '無法租借' },
+        //     { 'name': '紅磚六合院西1館', lat: 25.045644429910283, lng: 121.52764168254255, icon: green, lease: '可租借' },
+        //     { 'name': '三創生活3A', lat: 25.045581464297676, lng: 121.53111002430096, icon: green, lease: '可租借' },
+        // ]
+        // for (let i = 0; data.length > i; i++) {
+        //     L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }).addTo(map)
+        //         .bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>').openPopup();
+        // }
+        // let markers = new L.MarkerClusterGroup().addTo(map);
+        // map.addLayer(markers);
+
+
+        let map = L.map('map', {
+            center: [25.04569127009851, 121.52961418301948],
+            zoom: 16
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        let greenIcon = new L.Icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        let greyIcon = new L.Icon({
+            iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        
+        let data = [
+            { 'name': '格拉斯麗台北飯店#1', lat: 25.043282444187025, lng: 121.53072085834616, icon: greenIcon, lease: '可租借' },
+            { 'name': '和逸#忠孝', lat: 25.044837666240266, lng: 121.52535644056982, icon: greyIcon, lease: '無法租借' },
+            { 'name': '紅磚六合院西1館', lat: 25.045644429910283, lng: 121.52764168254255, icon: greenIcon, lease: '可租借' },
+            { 'name': '三創生活3A', lat: 25.045581464297676, lng: 121.53111002430096, icon: greenIcon, lease: '可租借' },
+        ]
+        let markers = new L.MarkerClusterGroup().addTo(map);;
+
+
+
+
+        for (let i = 0; data.length > i; i++) {
+            markers.addLayer(L.marker([data[i].lat,data[i].lng], {icon: data[i].icon}));
+             L.marker([data[i].lat,data[i].lng], {icon: data[i].icon}).addTo(map).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>').openPopup();
+        }
+        map.addLayer(markers);
+
+
+
+
+
+    </script>
+</body>
+
+</html>
