@@ -133,7 +133,7 @@
             shadowSize: [41, 41]
         });
 
-        
+
         let data = [
             { 'name': '格拉斯麗台北飯店#1', lat: 25.043282444187025, lng: 121.53072085834616, icon: greenIcon, lease: '可租借' },
             { 'name': '和逸_忠孝', lat: 25.044837666240266, lng: 121.52535644056982, icon: greyIcon, lease: '無法租借' },
@@ -151,29 +151,35 @@
             { 'name': '福容大飯店_台北一館', lat: 25.036896049588776, lng: 121.53738344519434, icon: greyIcon, lease: '無法租借' },
             { 'name': 'SOGO_台北忠孝', lat: 25.042252041445142, lng: 121.54493654552684, icon: greenIcon, lease: '可租借' },
             { 'name': '新光三越_鑽石塔', lat: 25.041475923374794, lng: 121.54201900146923, icon: greenIcon, lease: '可租借' },
-            { 'name': '圓山大飯店', lat: 25.081651691193546,lng: 121.52616598600167, icon: greenIcon, lease: '可租借' },
-            { 'name': '松山文創園區', lat: 25.047235778976518,  lng: 121.56040207490008, icon: greenIcon, lease: '可租借' },
-            { 'name': '臺北市立動物園', lat: 25.0017112565044,  lng: 121.58072105581194, icon: greyIcon, lease: '無法租借' },
+            { 'name': '圓山大飯店', lat: 25.081651691193546, lng: 121.52616598600167, icon: greenIcon, lease: '可租借' },
+            { 'name': '松山文創園區', lat: 25.047235778976518, lng: 121.56040207490008, icon: greenIcon, lease: '可租借' },
+            { 'name': '臺北市立動物園', lat: 25.0017112565044, lng: 121.58072105581194, icon: greyIcon, lease: '無法租借' },
             { 'name': '大安森林公園', lat: 25.032357044764147, lng: 121.53729967477004, icon: greenIcon, lease: '可租借' },
-            { 'name': '家樂福_新店', lat: 24.975347239355997, lng: 121.54843336249944, icon: greenIcon, lease: '可租借' },           
-            { 'name': '陽明山國家公園', lat: 25.20716745360941,  lng: 121.56747932261298, icon: greenIcon, lease: '可租借' },            
-            { 'name': '國立故宮博物院', lat: 25.110212526913195, lng: 121.54687995835192, icon: greyIcon, lease: '無法租借' },          
-            { 'name': '樹林環保河濱公園', lat: 24.969617326727857,lng:  121.3875508296167, icon: greenIcon, lease: '可租借' },
-            { 'name': '桃園藝文廣場', lat: 25.019553847585822, lng: 121.29986767587027, icon: greenIcon, lease: '可租借' },  
+            { 'name': '家樂福_新店', lat: 24.975347239355997, lng: 121.54843336249944, icon: greenIcon, lease: '可租借' },
+            { 'name': '陽明山國家公園', lat: 25.20716745360941, lng: 121.56747932261298, icon: greenIcon, lease: '可租借' },
+            { 'name': '國立故宮博物院', lat: 25.110212526913195, lng: 121.54687995835192, icon: greyIcon, lease: '無法租借' },
+            { 'name': '樹林環保河濱公園', lat: 24.969617326727857, lng: 121.3875508296167, icon: greenIcon, lease: '可租借' },
+            { 'name': '桃園藝文廣場', lat: 25.019553847585822, lng: 121.29986767587027, icon: greenIcon, lease: '可租借' },
         ]
-        let markers = new L.MarkerClusterGroup().addTo(map);;
+        let markers = new L.MarkerClusterGroup().addTo(map);
 
 
 
 
         for (let i = 0; data.length > i; i++) {
-            markers.addLayer(L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }));
+            markers.addLayer(L.marker([data[i].lat, data[i].lng], { icon: data[i].icon })).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>');
             L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }).addTo(map).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>');
         }
         map.addLayer(markers);
 
+      
 
+//click map alert location
+        function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+        }
 
+        map.on('click', onMapClick);
 
 
 
