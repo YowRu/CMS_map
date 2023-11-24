@@ -176,7 +176,8 @@
 
 //click map alert location
         function onMapClick(e) {
-            alert("您點選的經緯度 " + e.latlng);
+            alert("您點選的經緯度 :(" + e.latlng.lat+' , '+ e.latlng.lng +')');
+            console.log(e);
         }
 
         map.on('click', onMapClick);
