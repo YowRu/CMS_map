@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,6 +62,13 @@
     .marker-cluster span {
         line-height: 30px;
     }
+    @media (max-width:800px) {
+    .leaflet-popup-content img{width:200px;}
+}
+    @media (max-width:500px) {
+    .leaflet-popup-content img{width:100px;}
+}
+    
 </style>
 
 <body>
@@ -95,48 +103,45 @@
 
 
         let data = [
-            { 'name': '格拉斯麗台北飯店#1', lat: 25.043282444187025, lng: 121.53072085834616, icon: greenIcon, lease: '可租借' },
-            { 'name': '和逸_忠孝', lat: 25.044837666240266, lng: 121.52535644056982, icon: greyIcon, lease: '無法租借' },
-            { 'name': '紅磚六合院_西1館', lat: 25.045644429910283, lng: 121.52764168254255, icon: greenIcon, lease: '可租借' },
-            { 'name': '三創生活_3A', lat: 25.045581464297676, lng: 121.53111002430096, icon: greenIcon, lease: '可租借' },
-            { 'name': '阜杭豆漿', lat: 25.04434188415424, lng: 121.52474487629081, icon: greenIcon, lease: '可租借' },
-            { 'name': '國立臺北科技大學', lat: 25.044244682956368, lng: 121.53456176101764, icon: greyIcon, lease: '無法租借' },
-            { 'name': '美麗信花園酒店', lat: 25.045148651088596, lng: 121.53724397011669, icon: greenIcon, lease: '可租借' },
-            { 'name': '忠泰美術館', lat: 25.044400204841626, lng: 121.53727615674048, icon: greenIcon, lease: '可租借' },
-            { 'name': '微風廣場', lat: 25.046353931605992, lng: 121.54450739209055, icon: greenIcon, lease: '可租借' },
-            { 'name': '大潤發_中崙', lat: 25.045790172862166, lng: 121.54298389744207, icon: greyIcon, lease: '無法租借' },
-            { 'name': '遼寧夜市', lat: 25.050086337949054, lng: 121.54275859194057, icon: greenIcon, lease: '可租借' },
-            { 'name': 'SOGO_台北復興', lat: 25.041270289171784, lng: 121.54293025320953, icon: greenIcon, lease: '可租借' },
-            { 'name': '錢櫃_台北忠孝', lat: 25.041503577541718, lng: 121.5442606288419, icon: greenIcon, lease: '可租借' },
-            { 'name': '福容大飯店_台北一館', lat: 25.036896049588776, lng: 121.53738344519434, icon: greyIcon, lease: '無法租借' },
-            { 'name': 'SOGO_台北忠孝', lat: 25.042252041445142, lng: 121.54493654552684, icon: greenIcon, lease: '可租借' },
-            { 'name': '新光三越_鑽石塔', lat: 25.041475923374794, lng: 121.54201900146923, icon: greenIcon, lease: '可租借' },
-            { 'name': '圓山大飯店', lat: 25.081651691193546, lng: 121.52616598600167, icon: greenIcon, lease: '可租借' },
-            { 'name': '松山文創園區', lat: 25.047235778976518, lng: 121.56040207490008, icon: greenIcon, lease: '可租借' },
-            { 'name': '臺北市立動物園', lat: 25.0017112565044, lng: 121.58072105581194, icon: greyIcon, lease: '無法租借' },
-            { 'name': '大安森林公園', lat: 25.032357044764147, lng: 121.53729967477004, icon: greenIcon, lease: '可租借' },
-            { 'name': '家樂福_新店', lat: 24.975347239355997, lng: 121.54843336249944, icon: greenIcon, lease: '可租借' },
-            { 'name': '陽明山國家公園', lat: 25.20716745360941, lng: 121.56747932261298, icon: greenIcon, lease: '可租借' },
-            { 'name': '國立故宮博物院', lat: 25.110212526913195, lng: 121.54687995835192, icon: greyIcon, lease: '無法租借' },
-            { 'name': '樹林環保河濱公園', lat: 24.969617326727857, lng: 121.3875508296167, icon: greenIcon, lease: '可租借' },
-            { 'name': '桃園藝文廣場', lat: 25.019553847585822, lng: 121.29986767587027, icon: greenIcon, lease: '可租借' },
+            { 'name': '格拉斯麗台北飯店#1', lat: 25.043282444187025, lng: 121.53072085834616, icon: greenIcon, lease: '可租借', img: 'img/4.jpeg' },
+            { 'name': '和逸_忠孝', lat: 25.044837666240266, lng: 121.52535644056982, icon: greyIcon, lease: '無法租借', img: 'img/5.jpeg' },
+            { 'name': '紅磚六合院_西1館', lat: 25.045644429910283, lng: 121.52764168254255, icon: greenIcon, lease: '可租借', img: 'img/6.jpeg' },
+            { 'name': '三創生活_3A', lat: 25.045581464297676, lng: 121.53111002430096, icon: greenIcon, lease: '可租借', img: 'img/7.jpg' },
+            { 'name': '阜杭豆漿', lat: 25.04434188415424, lng: 121.52474487629081, icon: greenIcon, lease: '可租借', img: 'img/3.jpg' },
+            { 'name': '國立臺北科技大學', lat: 25.044244682956368, lng: 121.53456176101764, icon: greyIcon, lease: '無法租借', img: 'img/8.jpeg' },
+            { 'name': '美麗信花園酒店', lat: 25.045148651088596, lng: 121.53724397011669, icon: greenIcon, lease: '可租借', img: 'img/9.jpeg' },
+            { 'name': '忠泰美術館', lat: 25.044400204841626, lng: 121.53727615674048, icon: greenIcon, lease: '可租借', img: 'img/10.jpeg' },
+            { 'name': '微風廣場', lat: 25.046353931605992, lng: 121.54450739209055, icon: greenIcon, lease: '可租借', img: 'img/11.jpeg' },
+            { 'name': '大潤發_中崙', lat: 25.045790172862166, lng: 121.54298389744207, icon: greyIcon, lease: '無法租借', img: 'img/12.jpeg' },
+            { 'name': '遼寧夜市', lat: 25.050086337949054, lng: 121.54275859194057, icon: greenIcon, lease: '可租借', img: 'img/13.jpeg' },
+            { 'name': 'SOGO_台北復興', lat: 25.041270289171784, lng: 121.54293025320953, icon: greenIcon, lease: '可租借',img:'img/14.jpeg' },
+            { 'name': '錢櫃_台北忠孝', lat: 25.041503577541718, lng: 121.5442606288419, icon: greenIcon, lease: '可租借',img:'img/15.jpeg'},
+            { 'name': '福容大飯店_台北一館', lat: 25.036896049588776, lng: 121.53738344519434, icon: greyIcon, lease: '無法租借',img:'img/16.jpeg' },
+            { 'name': 'SOGO_台北忠孝', lat: 25.042252041445142, lng: 121.54493654552684, icon: greenIcon, lease: '可租借',img:'img/17.jpeg' },
+            { 'name': '新光三越_鑽石塔', lat: 25.041475923374794, lng: 121.54201900146923, icon: greenIcon, lease: '可租借',img:'img/18.jpeg' },
+            { 'name': '圓山大飯店', lat: 25.081651691193546, lng: 121.52616598600167, icon: greenIcon, lease: '可租借',img:'img/19.jpeg' },
+            { 'name': '松山文創園區', lat: 25.047235778976518, lng: 121.56040207490008, icon: greenIcon, lease: '可租借', img: 'img/1.jpeg' },
+            { 'name': '臺北市立動物園', lat: 25.0017112565044, lng: 121.58072105581194, icon: greyIcon, lease: '無法租借' ,img:'img/20.jpeg'},
+            { 'name': '大安森林公園', lat: 25.032357044764147, lng: 121.53729967477004, icon: greenIcon, lease: '可租借',img:'img/21.jpeg' },
+            { 'name': '家樂福_新店', lat: 24.975347239355997, lng: 121.54843336249944, icon: greenIcon, lease: '可租借',img:'img/22.jpeg' },
+            { 'name': '陽明山國家公園', lat: 25.20716745360941, lng: 121.56747932261298, icon: greenIcon, lease: '可租借',img:'img/23.jpeg' },
+            { 'name': '國立故宮博物院', lat: 25.110212526913195, lng: 121.54687995835192, icon: greyIcon, lease: '無法租借',img:'img/24.jpeg' },
+            { 'name': '樹林環保河濱公園', lat: 24.969617326727857, lng: 121.3875508296167, icon: greenIcon, lease: '可租借',img:'img/25.jpeg' },
+            { 'name': '桃園藝文廣場', lat: 25.019553847585822, lng: 121.29986767587027, icon: greenIcon, lease: '可租借', img: 'img/2.jpeg' },
         ]
         let markers = new L.MarkerClusterGroup().addTo(map);
 
 
-
-
         for (let i = 0; data.length > i; i++) {
-            markers.addLayer(L.marker([data[i].lat, data[i].lng], { icon: data[i].icon })).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>');
-            L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }).addTo(map).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>');
+            markers.addLayer(L.marker([data[i].lat, data[i].lng], { icon: data[i].icon })).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>', {maxWidth :'80% !important'});
+            L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }).addTo(map).bindPopup('<img src="' + data[i].img + '"/>' + '<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>', {maxWidth :'80% !important'});
         }
         map.addLayer(markers);
 
-      
-
-//click map alert location
+       
+        //click map alert location
         function onMapClick(e) {
-            alert("您點選的經緯度 :(" + e.latlng.lat+' , '+ e.latlng.lng +')');
+            // alert("您點選的經緯度 :(" + e.latlng.lat+' , '+ e.latlng.lng +')');
             console.log(e);
         }
 
