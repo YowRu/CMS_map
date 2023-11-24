@@ -9,6 +9,7 @@
     </link>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css">
     </link>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/leaflet.markercluster.js"></script>
     <title>CMS_map</title>
@@ -167,9 +168,10 @@
 
         for (let i = 0; data.length > i; i++) {
             markers.addLayer(L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }));
-            L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }).addTo(map).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>').openPopup();
+            L.marker([data[i].lat, data[i].lng], { icon: data[i].icon }).addTo(map).bindPopup('<h3>' + data[i].name + '</h3><h4>' + data[i].lease + '</h4>');
         }
         map.addLayer(markers);
+
 
 
 
